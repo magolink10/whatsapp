@@ -6,7 +6,7 @@ from flask import Flask, request
 
 
 
-messenger = WhatsApp(environ.get("TOKEN")) #this should be writen as 
+messenger = WhatsApp(environ.get("TOKEN"), phone_number_id=environ.get("PHONE_NUMBER_ID"))
 #WhatsApp(token = "inpust accesstoken", phone_number_id="input phone number id") #messages are not recieved without this pattern
 
 
