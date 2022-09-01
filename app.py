@@ -45,7 +45,7 @@ def hook():
                 message = messenger.get_message(data)
                 name = messenger.get_name(data)
                 print(f"{name} with this {mobile} number sent  {message}")
-                messenger.send_message(f"Hi {name}, nice to connect with you", mobile)
+                messenger.send_message(f"Hola {name}, este es un mensaje de prueba", mobile)
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
