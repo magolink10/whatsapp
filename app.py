@@ -67,7 +67,7 @@ def hook():
                     #print (b64)
                     
                     try:
-                        bytes = b64decode(b64, validate=True)
+                        bytes = b64decode(b64)
                     except Exception as e:
                         print (e)
                     
