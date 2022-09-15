@@ -64,7 +64,7 @@ def hook():
                     #print(f"{name} with this {mobile} number sent  {message}")
                     
              
-                    messenger.send_message(d[0]['estado'], mobile)
+                    #messenger.send_message(d[0]['estado'], mobile)
                     if(d[0]['estado']=='Encontrado'):
                         
                         try:
