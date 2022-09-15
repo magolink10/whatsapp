@@ -62,7 +62,7 @@ def hook():
                     d=response.json()
                     #print (d)
                     #print(f"{name} with this {mobile} number sent  {message}")
-                    try:
+                    
                     b64 = str(d[0]['imagen'])
                     print (b64)
                     
