@@ -67,7 +67,7 @@ def hook():
                     bytes = b64decode(b64, validate=True)
                     messenger.send_message(d[0]['estado'], mobile)
                     messenger.send_image(image=bytes,recipient_id=mobile,link=False)
-                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)
+                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
