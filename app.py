@@ -54,7 +54,7 @@ def hook():
                     print(f"{name} with this {mobile} number sent  {message}")
                     messenger.send_message(f"Ingrese su numero de cedula:", mobile)
                 else:
-                    messenger.send_message(f"Hola, {name}", mobile)
+                    #messenger.send_message(f"Hola, {name}", mobile)
                     url="http://186.46.168.227:8082/consulta/"+message
                     
                     #print(url)
@@ -64,11 +64,11 @@ def hook():
                     #print(f"{name} with this {mobile} number sent  {message}")
                     try:
                     b64 = str(d[0]['imagen'])
+                    print (b64)
                     
-                    try:
-                        bytes = b64decode(b64, validate=True)
-                    except:
-                        bytes=None
+                   
+                    #bytes = b64decode(b64, validate=True)
+                    
                     messenger.send_message(d[0]['estado'], mobile)
                     #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
                     #messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
