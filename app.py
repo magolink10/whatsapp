@@ -50,9 +50,9 @@ def hook():
             if message_type == "text":
                 message = messenger.get_message(data)
                 name = messenger.get_name(data)
-                if(message=='iniciar'):
+                if(message=='iniciar' or message=='Iniciar'):
                     print(f"{name} with this {mobile} number sent  {message}")
-                    messenger.send_message(f"Ingrese su número de cédula:", mobile)
+                    messenger.send_message(f"Ingrese su numero de cedula:", mobile)
                 else:
                     response = requests.post(url+'message')
                     d=response.json()
