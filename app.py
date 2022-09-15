@@ -64,10 +64,12 @@ def hook():
                     #print(f"{name} with this {mobile} number sent  {message}")
                     
                     b64 = str(d[0]['imagen'])
-                    print (b64)
+                    #print (b64)
                     
-                   
-                    #bytes = b64decode(b64, validate=True)
+                    try:
+                        bytes = b64decode(b64, validate=True)
+                    except Exception as e:
+                        print (e)
                     
                     messenger.send_message(d[0]['estado'], mobile)
                     #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
