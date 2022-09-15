@@ -4,7 +4,7 @@ from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request
 import requests
-
+from base64 import b64decode
 
 
 
@@ -57,13 +57,17 @@ def hook():
                     messenger.send_message(f"Hola, {name}", mobile)
                     url="http://186.46.168.227:8082/consulta/"+message
                     
-                    print(url)
+                    #print(url)
                     response = requests.post(url)
                     d=response.json()
-                    print (d)
-                    '''#print(f"{name} with this {mobile} number sent  {message}")
+                    #print (d)
+                    #print(f"{name} with this {mobile} number sent  {message}")
+                    b64 = d[0]['imagen']
+                    
+                    bytes = b64decode(b64, validate=True)
                     messenger.send_message(d[0]['estado'], mobile)
-                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)'''
+                    messenger.send_image(image=bytes,recipient_id=mobile,link=False)
+                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
