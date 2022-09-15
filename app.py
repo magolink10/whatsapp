@@ -73,8 +73,11 @@ def hook():
                     
                     messenger.send_message(d[0]['estado'], mobile)
                     #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
+                    
                     try:
-                        messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
+                        print(d[0]['loc'].split(',')[0])
+                        print(d[0]['loc'].split(',')[1])
+                        #messenger.send_location(lat=,long=,mobile)
                     except Exception as e:
                         print (e)                       
 
