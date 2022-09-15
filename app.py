@@ -68,7 +68,7 @@ def hook():
                     if(d[0]['estado']=='Encontrado'):
                         
                         try:
-                            messenger.send_image(image="http://186.46.168.227:8082/imagenes/"+message+"".jpg",recipient_id=mobile)
+                            messenger.send_image(image="http://186.46.168.227:8082/imagenes/"+message+".jpg",recipient_id=mobile)
                             messenger.send_location(lat=float(d[0]['loc'].split(',')[0]),long=float(d[0]['loc'].split(',')[1]),name="",address="",recipient_id=mobile)
 
                         except Exception as e:
