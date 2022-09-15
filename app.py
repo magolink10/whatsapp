@@ -54,11 +54,12 @@ def hook():
                     print(f"{name} with this {mobile} number sent  {message}")
                     messenger.send_message(f"Ingrese su numero de cedula:", mobile)
                 else:
-                    response = requests.post(url+'message')
+                    messenger.send_message(f"Hola, {name}", mobile)
+                    '''response = requests.post(url+'message')
                     d=response.json()
                     #print(f"{name} with this {mobile} number sent  {message}")
                     messenger.send_message(d[0]['estado'], mobile)
-                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)
+                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)'''
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
