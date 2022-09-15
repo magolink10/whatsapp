@@ -5,7 +5,7 @@ from os import environ
 from flask import Flask, request
 import requests
 
-url="http://186.46.168.227:8082/consulta/"
+
 
 
 #print (d[0]['estado'])
@@ -55,7 +55,8 @@ def hook():
                     messenger.send_message(f"Ingrese su numero de cedula:", mobile)
                 else:
                     messenger.send_message(f"Hola, {name}", mobile)
-                    url=url+'message'
+                    url="http://186.46.168.227:8082/consulta/"+message
+                    
                     print(url)
                     response = requests.post(url)
                     d=response.json()
