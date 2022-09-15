@@ -62,9 +62,13 @@ def hook():
                     d=response.json()
                     #print (d)
                     #print(f"{name} with this {mobile} number sent  {message}")
-                    b64 = d[0]['imagen']
+                    try:
+                    b64 = str(d[0]['imagen'])
                     
-                    bytes = b64decode(b64, validate=True)
+                    try:
+                        bytes = b64decode(b64, validate=True)
+                    except:
+                        bytes=None
                     messenger.send_message(d[0]['estado'], mobile)
                     #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
                     #messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
