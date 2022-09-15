@@ -3,8 +3,14 @@ import json
 from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request
+import requests
+
+url="http://186.46.168.227:8082/consulta/"
 
 
+#print (d[0]['estado'])
+#print (d[0]['loc'])
+#print (d[0]['imagen'])
 
 messenger = WhatsApp(environ.get("TOKEN"), phone_number_id=environ.get("PHONE_NUMBER_ID"))
 #WhatsApp(token = "inpust accesstoken", phone_number_id="input phone number id") #messages are not recieved without this pattern
@@ -44,13 +50,15 @@ def hook():
             if message_type == "text":
                 message = messenger.get_message(data)
                 name = messenger.get_name(data)
-                if(message=='prueba'):
+                if(message=='iniciar'):
                     print(f"{name} with this {mobile} number sent  {message}")
-                    messenger.send_message(f"Otro...", mobile)
+                    messenger.send_message(f"Ingrese su número de cédula:", mobile)
                 else:
-                    
-                    print(f"{name} with this {mobile} number sent  {message}")
-                    messenger.send_message(f"Hola {name}, este es un mensaje de prueba", mobile)
+                    response = requests.post(url+'message')
+                    d=response.json()
+                    #print(f"{name} with this {mobile} number sent  {message}")
+                    messenger.send_message(d[0]['estado'], mobile)
+                    messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile,)
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
