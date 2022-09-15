@@ -63,23 +63,21 @@ def hook():
                     #print (d)
                     #print(f"{name} with this {mobile} number sent  {message}")
                     
-                    b64 = str(d[0]['imagen'])
-                    #print (b64)
+             
                     
-                    try:
-                        bytes = b64decode(b64)
-                    except Exception as e:
-                        print (e)
-                    
-                    messenger.send_message(d[0]['estado'], mobile)
-                    #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
-                    
-                    try:
-                        print(d[0]['loc'].split(',')[0])
-                        print(d[0]['loc'].split(',')[1])
-                        #messenger.send_location(lat=,long=,mobile)
-                    except Exception as e:
-                        print (e)                       
+                    if(d[0]['estado']=='Encontrado'):
+                        
+                        try:
+                            messenger.send_image(image="http://186.46.168.227:8082/imagenes/"+message+"".jpg",recipient_id=mobile)
+                            messenger.send_location(lat=float(d[0]['loc'].split(',')[0]),long=float(d[0]['loc'].split(',')[1]),name="",address="",recipient_id=mobile)
+
+                        except Exception as e:
+                            print (e)
+                                                 
+                    else:
+                        messenger.send_message(d[0]['estado'], mobile)
+                                               
+                                       
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
