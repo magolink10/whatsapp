@@ -73,7 +73,10 @@ def hook():
                     
                     messenger.send_message(d[0]['estado'], mobile)
                     #messenger.send_image(image=bytes,recipient_id=mobile,link=False)
-                    #messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
+                    try:
+                        messenger.send_location(lat=d[0]['loc'].split(',')[0],long=d[0]['loc'].split(',')[1],mobile)
+                    except Exception as e:
+                        print (e)                       
 
             elif message_type == "interactive":
                 message_response = messenger.get_interactive_response(data)
