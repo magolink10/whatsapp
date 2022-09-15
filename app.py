@@ -52,7 +52,7 @@ def hook():
                 name = messenger.get_name(data)
                 if(message=='iniciar' or message=='Iniciar'):
                     print(f"{name} with this {mobile} number sent  {message}")
-                    messenger.send_message(f"Ingrese su numero de cedula:", mobile)
+                    messenger.send_message(f"Ingrese su número de cédula:", mobile)
                 else:
                     #messenger.send_message(f"Hola, {name}", mobile)
                     url="http://186.46.168.227:8082/consulta/"+message
@@ -64,7 +64,7 @@ def hook():
                     #print(f"{name} with this {mobile} number sent  {message}")
                     
              
-                    
+                    messenger.send_message(d[0]['estado'], mobile)
                     if(d[0]['estado']=='Encontrado'):
                         
                         try:
